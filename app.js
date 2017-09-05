@@ -8,7 +8,11 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var bbs = require('./routes/api/bbs'); // extends the javascript file path
+
 var app = express();
+
+var mysql = require('mysql');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +28,52 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+app.use('/api/bbs', bbs);
+
+
+/*
+//TODO : 환경설정 파일로 읽어 들이기 - 귀찮다.
+var dbConnection = mysql.createConnection({   
+                    host: '', 
+                    user: '',   
+                    password: '',   
+                    database: '' 
+                   });
+
+
+//커넥션 테스트 작업 : 지워도 됨
+dbConnection.query('select 1', [111],function (err, rows, fields) {
+    console.log(err);
+    if(err){
+      console.log(err);
+      return ;
+    }
+    console.log("connection test===============");
+    console.log(rows);
+    console.log("connection test===============");
+});
+*/
+
+/** Packing the Response-JSON-Data */
+var formatter = require('./routes/formatter');
+global.jsonCapsule = formatter.jsonCapsule; // json formatter
+global.jsonpCapsule = formatter.jsonpCapsule; // jsonp formatter
+
+
+
+
+
+/** mysql connection pool */
+global.dbpool = mysql.createPool({ 
+    host: '', 
+    user: '',   
+     port: 3306,
+    password: '',   
+    database: 'test' ,
+    connectionLimit: 100
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
