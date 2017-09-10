@@ -35,10 +35,11 @@ app.use('/api/bbs', bbs);
 /*
 //TODO : 환경설정 파일로 읽어 들이기 - 귀찮다.
 var dbConnection = mysql.createConnection({   
-                    host: '', 
-                    user: '',   
-                    password: '',   
-                    database: '' 
+host: 'chleedb.cpv7fosc6pfp.us-west-2.rds.amazonaws.com', 
+    user: 'chlee',   
+     port: 3306,
+    password: 'data1234',   
+    database: 'test' ,
                    });
 
 
@@ -66,12 +67,13 @@ global.jsonpCapsule = formatter.jsonpCapsule; // jsonp formatter
 
 /** mysql connection pool */
 global.dbpool = mysql.createPool({ 
-    host: '', 
-    user: '',   
+host: 'chleedb.cpv7fosc6pfp.us-west-2.rds.amazonaws.com', 
+    user: 'chlee',   
      port: 3306,
-    password: '',   
+    password: 'data1234',   
     database: 'test' ,
-    connectionLimit: 100
+    connectionLimit: 100,
+    connectTimeout: 30000
 });
 
 
