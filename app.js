@@ -10,13 +10,20 @@ var users = require('./routes/users');
 
 var bbs = require('./routes/api/bbs'); // extends the javascript file path
 
+var mobile_main = require('./routes/mobile/main'); //20170922 모바일
+
+
+// view engine setup
+var ECT = require('ect'); //add ect
+var ectRenderer = ECT({ watch: true, root: __dirname + '/views', ext : '.ect' }); //add ect
 var app = express();
+
+// view engine setup
+app.engine('ect', ectRenderer.render); //modified ect
+app.set('view engine', 'ect'); //modified ect
 
 var mysql = require('mysql');
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,10 +33,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', index);
 app.use('/users', users);
 
 app.use('/api/bbs', bbs);
+app.use('/mobile/main', mobile_main);//20170922 모바일
 
 
 /*
@@ -63,7 +73,28 @@ global.jsonpCapsule = formatter.jsonpCapsule; // jsonp formatter
 
 
 
+/** mssql connection*/
+//global config
+global._db_ajis  ={
+    user: 'cdy',
+    password: 'lee21137',
+    server: 'localhost', 
+    database: 'ajis',
+}
 
+global._db_crewing  ={
+    user: 'cdy',
+    password: 'lee21137',
+    server: 'localhost',
+    database: 'crewing',
+}
+
+global._db_ajisIntra = {
+    user: 'cdy',
+    password: 'lee21137',
+    server: 'localhost', 
+    database: 'ajisIntra',
+}
 
 /** mysql connection pool */
 global.dbpool = mysql.createPool({ 

@@ -1,0 +1,244 @@
+/* LightboxSE is a small, simple lightbox alternative      */
+/* Copyright Geoff Squires                           	   */
+/* licensed under MIT  http://opensource.org/licenses/MIT  */
+
+
+/* the background overlayer */
+.lightboxBackground
+{
+	position:absolute;
+	overflow:hidden;
+		
+	left:0px;
+	top:0px;
+	
+	width:100%;
+	height:100%;
+	
+	background:#000000;
+
+	filter:alpha(opacity=0);
+	opacity:0;
+	-moz-opacity:0;
+
+	z-index:10;
+}
+
+
+/* the actual lightbox */
+.lightbox
+{
+	border-style:solid;
+	border-width:5px;
+	border-color:#ffffff;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	background:#000000;
+	
+	z-index:11;
+}
+
+
+/* lightbox contents - background to images, etc */
+.lightboxContent
+{
+	position:absolute;
+	
+	left:0px;
+	top:0px;
+	
+	width:100%;
+	height:100%;
+	
+	z-index:12;
+}
+
+
+/* when an Iframe is used, found some alignment issues, this corrects for that */
+.lightboxIFrameContent
+{
+	position:absolute;
+
+	top:0px;
+	left:0px;
+	
+	margin-right:1px;
+	width:100%;
+	height:100%;
+	
+	border-style:solid;
+	border-color:#000000;
+	border-width:1px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	overflow:hidden;
+}
+
+
+/* overlayer for images - prevent right click and save */
+/* can include watermark image here as background      */
+.lightboxOverlayer
+{
+	position:absolute;
+	
+	left:0px;
+	top:0px;
+
+	width:100%;
+	height:100%;
+		
+	z-index:13;
+}
+
+
+/* close button */
+.lightboxCloseButton
+{
+	position:absolute;
+	background: url('../media/lightboxSE/closeButton.png');
+
+	left:-50px;
+	top:0px;
+	
+	width:40px;
+	height:40px;
+
+	/* adjust for position */
+	margin-left: -15px;
+	margin-top: -15px;
+
+	z-index:15;
+}
+
+
+/* the caption bar */
+.lightboxCaptionBar
+{
+	position:absolute;
+	
+	bottom:0px;
+	left:0px;
+	
+	width:100%;
+	height:50px;
+	
+	background: #ffffff;
+	
+	filter:alpha(opacity=80);
+	opacity:.8;
+	-moz-opacity:.8;
+		
+	z-index:15;
+}
+
+
+/* the text for the caption */
+.lightboxCaptionText
+{
+	position:absolute;
+	
+	left:10px;
+	bottom:10px;
+	
+	margin:0;
+	padding:0;
+	
+	width:75%;
+	height:30px;
+		
+	font-family:'serif';
+	font-size:24px;
+	color:#ffff;
+
+	z-index:15;
+	overflow:hidden;
+}
+
+
+/* previous slide button */
+.lightboxPrevButton
+{
+	position:absolute;
+	background: url('../media/lightboxSE/prevButton.png');
+
+	width:40px;
+	height:40px;
+	
+	left:-50px;
+	top:0px;
+	
+	/* adjust for position */
+	margin-left: -150px;
+	margin-top: -45px;
+	
+	z-index:16;
+}
+
+
+/* next slide button */
+.lightboxNextButton
+{
+	position:absolute;
+	background: url('../media/lightboxSE/nextButton.png');
+
+	width:40px;
+	height:40px;
+	
+	left:-50px;
+	top:0px;
+	
+	/* adjust for position */
+	margin-left: -100px;
+	margin-top: -45px;
+	
+	z-index:16;
+}
+
+
+/* play slide button */
+.lightboxPlayButton
+{
+	position:absolute;
+	background: url('../media/lightboxSE/playButton.png');
+
+	width:40px;
+	height:40px;
+	
+	left:-50px;
+	top:0px;
+	
+	/* adjust for position */
+	margin-left: -50px;
+	margin-top: -45px;
+	
+	visibility: visible;
+	z-index:16;
+}
+
+
+/* pause slide button */
+.lightboxPauseButton
+{
+	position:absolute;
+	background: url('../media/lightboxSE/pauseButton.png');
+
+	width:40px;
+	height:40px;
+	
+	left:-50px;
+	top:0px;
+	
+	/* adjust for position */
+	margin-left: -50px;
+	margin-top: -45px;
+	
+	visibility: hidden;
+	z-index:16;
+}
+
